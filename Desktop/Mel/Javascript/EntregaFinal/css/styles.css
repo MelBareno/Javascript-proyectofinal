@@ -1,0 +1,1061 @@
+@charset "UTF-8";
+
+/* =================================================================== 
+ * TOC:
+ * # SETTINGS
+ *      ## fonts 
+ *      ## colors 
+ *      ## spacing and typescale
+ *      ## grid variables
+ * # NORMALIZE
+ * # BASE SETUP
+ * # GRID
+ *      ## large screen devices
+ *      ## medium screen devices 
+ *      ## tablet devices 
+ *      ## mobile devices 
+ *      ## small screen devices 
+ *      ## additional column stackpoints 
+ * # TYPOGRAPHY 
+ *      ## base type styles
+ *      ## spacing
+ * # BUTTONS
+ * # PROJECT-WIDE SHARED STYLES
+ *      ## theme-specific typography classes
+ *      ## media classes
+ * # SITE HEADER
+ *      ## logo
+ *      ## main navigation
+ *      ## cta button
+ * # FOOTER
+ *------------------------------------------------------------------ */
+
+/* ===================================================================
+ * # SETTINGS
+ *---------------------------------------------------------------- */
+/* fuentes de google https://fonts.google.com/specimen/Heebo?query=heebo&category=Sans+Serif&preview.text=kj&preview.text_type=custom
+     */
+
+ @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Heebo:wght@300;400;500;600;700&display=swap");
+
+:root {
+    --font-1    : "Inter", sans-serif;
+    --font-2    : "Heebo", sans-serif;
+  }
+
+/* ------------------------------------------------------------------- 
+ * ## colors
+ * ------------------------------------------------------------------- */
+:root {
+
+    /* color-1(#3F885C)
+     */
+    --color-1                       : hsla(144, 37%, 39%, 1);
+   
+    /* theme color variations
+     */
+    --color-1-lightest              : hsla(144, 37%, 79%, 1);
+    --color-1-lighter               : hsla(144, 37%, 69%, 1);
+    --color-1-light                 : hsla(144, 37%, 49%, 1);
+    --color-1-dark                  : hsla(144, 37%, 29%, 1);
+    --color-1-darker                : hsla(144, 37%, 19%, 1);
+    --color-1-darkest               : hsla(144, 37%, 9%, 1);
+
+
+    /* shades 
+     * generated using 
+     * Tint & Shade Generator 
+     * (https://maketintsandshades.com/)
+     */
+    --color-black                   : #000000;
+    --color-gray-19                 : #161616;
+    --color-gray-18                 : #2c2c2c;
+    --color-gray-17                 : #424342;
+    --color-gray-16                 : #585958;
+    --color-gray-15                 : #6e6f6f;
+    --color-gray-14                 : #838585;
+    --color-gray-13                 : #999b9b;
+    --color-gray-12                 : #afb2b1;
+    --color-gray-11                 : #c5c8c7;
+    --color-gray-10                 : #dbdedd;
+    --color-gray-9                  : #dfe1e0;
+    --color-gray-8                  : #e2e5e4;
+    --color-gray-7                  : #e6e8e7;
+    --color-gray-6                  : #e9ebeb;
+    --color-gray-5                  : #edefee;
+    --color-gray-4                  : #f1f2f1;
+    --color-gray-3                  : #f4f5f5;
+    --color-gray-2                  : #f8f8f8;
+    --color-gray-1                  : #fbfcfc;
+    --color-white                   : #ffffff;
+
+    /* text
+     */
+    --color-text                    : var(--color-gray-19);
+    --color-text-dark               : var(--color-gray-19);
+    --color-text-light              : var(--color-gray-13);
+
+    /* buttons
+     */
+    --color-btn                     : var(--color-gray-6);
+    --color-btn-text                : var(--color-black);
+    --color-btn-hover               : var(--color-gray-8);
+    --color-btn-hover-text          : var(--color-black);
+    
+    /* preloader
+     */
+     --color-preloader-bg            : var(--color-gray-19);
+     --color-loader                  : rgba(169, 249, 192, 0.733);
+     --color-loader-light            : rgba(255, 255, 255, 0.1);
+
+    /* others
+     */
+    --color-body                    : white;
+    --color-border                  : rgba(0, 0, 0, 0.08);
+    --border-radius                 : 8px;
+}
+
+/* ------------------------------------------------------------------- 
+ * ## spacing and typescale
+ * ------------------------------------------------------------------- */
+:root {
+
+    /* spacing
+     * base font size: 18px 
+     * vertical space unit : 32px
+     */
+    --base-size         : 62.5%;
+    --multiplier        : 1;
+    --base-font-size    : calc(1.8rem * var(--multiplier));
+    --space             : calc(3.2rem * var(--multiplier));
+
+    /* vertical spacing 
+     */
+    --vspace-0_125      : calc(0.125 * var(--space));
+    --vspace-0_25       : calc(0.25 * var(--space));
+    --vspace-0_375      : calc(0.375 * var(--space));
+    --vspace-0_5        : calc(0.5 * var(--space));
+    --vspace-0_625      : calc(0.625 * var(--space));
+    --vspace-0_75       : calc(0.75 * var(--space));
+    --vspace-0_875      : calc(0.875 * var(--space));
+    --vspace-1          : calc(var(--space));
+    --vspace-1_25       : calc(1.25 * var(--space));
+    --vspace-1_5        : calc(1.5 * var(--space));
+    --vspace-1_75       : calc(1.75 * var(--space));
+    --vspace-2          : calc(2 * var(--space));
+    --vspace-2_5        : calc(2.5 * var(--space));
+    --vspace-3          : calc(3 * var(--space));
+    --vspace-3_5        : calc(3.5 * var(--space));
+    --vspace-4          : calc(4 * var(--space));
+    --vspace-4_5        : calc(4.5 * var(--space));
+    --vspace-5          : calc(5 * var(--space));
+
+    /* type scale
+     * ratio 1:2 | base: 18px
+     * -------------------------------------------------------
+     *
+     * --text-display-3 = (77.40px)
+     * --text-display-2 = (64.50px)
+     * --text-display-1 = (53.75px)
+     * --text-xxxl      = (44.79px)
+     * --text-xxl       = (37.32px)
+     * --text-xl        = (31.10px)
+     * --text-lg        = (25.92px)
+     * --text-md        = (21.60px)
+     * --text-size      = (18.00px) BASE
+     * --text-sm        = (15.00px)
+     * --text-xs        = (12.50px)
+     *
+     * ---------------------------------------------------------
+     */
+    --text-scale-ratio  : 1.2;
+    --text-size         : var(--base-font-size);
+    --text-xs           : calc((var(--text-size) / var(--text-scale-ratio)) / var(--text-scale-ratio));
+    --text-sm           : calc(var(--text-xs) * var(--text-scale-ratio));
+    --text-md           : calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+    --text-lg           : calc(var(--text-md) * var(--text-scale-ratio));
+    --text-xl           : calc(var(--text-lg) * var(--text-scale-ratio));
+    --text-xxl          : calc(var(--text-xl) * var(--text-scale-ratio));
+    --text-xxxl         : calc(var(--text-xxl) * var(--text-scale-ratio));
+    --text-display-1    : calc(var(--text-xxxl) * var(--text-scale-ratio));
+    --text-display-2    : calc(var(--text-display-1) * var(--text-scale-ratio));
+    --text-display-3    : calc(var(--text-display-2) * var(--text-scale-ratio));
+
+    /* default button height
+     */
+    --vspace-btn        : var(--vspace-2);
+}
+/* on mobile devices below 600px, change the value of '--multiplier' 
+ * to adjust the values of base font size and vertical space unit.
+ */
+ @media screen and (max-width: 600px) {
+    :root {
+        --multiplier : 0.9375;
+    }
+}
+/* ------------------------------------------------------------------- 
+ * ## grid variables
+ * ------------------------------------------------------------------- */
+:root {
+
+    /* widths for rows and containers
+     */
+    --width-full     : 100%;
+    --width-max      : 1200px;
+    --width-wide     : 1400px;
+    --width-wider    : 1600px;
+    --width-widest   : 1800px;
+    --width-narrow   : 1000px;
+    --width-narrower : 800px;
+    --width-grid-max : var(--width-max);
+
+    /* gutter
+     */
+    --gutter         : 2.2rem;
+}
+
+/* on mobile devices
+ */
+ @media screen and (max-width: 600px) {
+    :root {
+        --gutter : 1rem
+    }
+}
+
+/* ====================================================================
+ * # NORMALIZE
+* -------------------------------------------------------------------- */
+html {
+    line-height              : 1.15;
+    text-size-adjust         : 100%;
+}
+
+body {
+    margin : 0;
+}
+
+main {
+    display : block;
+}
+
+h1 {
+    font-size : 2em;
+    margin    : 0.67em 0;
+}
+
+
+hr {
+    box-sizing : content-box;
+    height     : 0;
+    overflow   : visible;
+}
+
+a {
+    background-color : transparent;
+}
+
+img {
+    border-style : none;
+}
+
+button,
+input,
+textarea {
+    font-family : inherit;
+    font-size   : 100%;
+    line-height : 1.15;
+    margin      : 0;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    appearance : button;
+}
+
+textarea {
+    overflow : auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing : border-box;
+    padding    : 0;
+}
+
+[type="search"] {
+    appearance : textfield;
+    outline-offset     : -2px;
+}
+
+details {
+    display : block;
+}
+
+
+[hidden] {
+    display : none;
+}
+
+/* ===================================================================
+ * # BASE SETUP
+ * ------------------------------------------------------------------- */
+html {
+    font-size  : var(--base-size);
+    box-sizing : border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing : inherit;
+}
+
+html,
+body {
+    height : 100%;
+}
+
+body { background-image            : url(../assets/img/background.jpg);
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: auto;
+    
+}   
+header {
+
+    opacity                     : 1;  
+    font-weight                 : bold;
+}
+p {
+    font-size      : inherit;
+    text-rendering : optimizeLegibility;
+}
+
+a {
+    text-decoration : none;
+}
+
+svg,
+img,
+video {
+    max-width : 100%;
+    height    : auto;
+}
+
+pre {
+    overflow : auto;
+}
+
+div,
+dl,
+dt,
+dd,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+    margin  : 0;
+    padding : 0;
+}
+
+
+/* ===================================================================
+ * # GRID*
+ ------------------------------------------------------------------- */
+
+#grilla{
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "nav main_body "
+    "footer footer";
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    column-gap: 2%;
+    row-gap: 2%;
+}
+
+header{
+    grid-area: header;
+}
+footer{
+    grid-area: footer;
+    justify-self: center;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+section#main_body {
+    grid-area: main_body;
+    align-self: center;
+    justify-self: center;
+
+}
+nav{
+    grid-area: nav;
+}
+
+/* row 
+ */
+.row {
+    width     : 92%;
+    max-width : var(--width-grid-max);
+    margin    : 0 auto;
+    display   : flex;
+    flex-flow : row wrap;
+}
+
+.row .row {
+    width        : auto;
+    max-width    : none;
+    margin-left  : calc(var(--gutter) * -1);
+    margin-right : calc(var(--gutter) * -1);
+}
+
+/* column
+ */
+.column {
+    display : block;
+    flex    : 1 1 0%;
+    padding : 0 var(--gutter);
+}
+
+.collapse>.column,
+.column.collapse {
+    padding : 0;
+}
+
+
+/* --------------------------------------------------------------------
+ * ## mobile devices 
+ * -------------------------------------------------------------------- */
+ @media screen and (max-width: 600px) {
+    .row {
+        width         : 100%;
+        padding-left  : 6vw;
+        padding-right : 6vw;
+    }
+
+    .row .row {
+        padding-left  : 0;
+        padding-right : 0;
+    }
+
+    .mob-1 {
+        flex  : none;
+        width : 8.33333%;
+    }
+    
+}
+@media screen and (min-width: 992px) {
+    #grilla {
+      grid-template-areas:
+        "header header header"
+        "nav main_body main_body"
+        "footer footer footer";
+    grid-template-columns: auto auto auto ;
+    }
+}
+/* ===================================================================
+ * # TYPOGRAPHY 
+ *
+ * ------------------------------------------------------------------- 
+ * type scale - ratio 1:2 | base: 18px
+ * -------------------------------------------------------------------
+ *
+ * --text-display-3 = (77.40px)
+ * --text-display-2 = (64.50px)
+ * --text-display-1 = (53.75px)
+ * --text-xxxl      = (44.79px)
+ * --text-xxl       = (37.32px)
+ * --text-xl        = (31.10px)
+ * --text-lg        = (25.92px)
+ * --text-md        = (21.60px)
+ * --text-size      = (18.00px) BASE
+ * --text-sm        = (15.00px)
+ * --text-xs        = (12.50px)
+ *
+ * -------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------
+ * ## base type styles
+ * -------------------------------------------------------------------- */
+body {
+    font-family : var(--font-1);
+    font-size   : var(--base-font-size);
+    font-weight : 400;
+    line-height : var(--vspace-1);
+    color       : var(--color-text);
+}
+
+/* links
+ */
+a { 
+    color      : var(--color-1);
+    transition : all 0.3s ease-in-out;
+}
+
+a:focus,
+a:hover,
+a:active {
+    color : var(--color-2);
+}
+
+a:hover,
+a:active {
+    outline : 0;
+}
+
+/* headings
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6
+ {
+    font-family            : var(--font-2);
+    font-weight            : 500;
+    color                  : var(--color-text-dark);
+ }
+
+h1,
+.h1 {
+    font-size      : var(--text-display-2);
+    line-height    : calc(2.25 * var(--space));
+    letter-spacing : -0.015em;
+}
+
+h2,
+.h2 {
+    font-size      : var(--text-xl);
+    line-height    : calc(1.375 * var(--space));
+    letter-spacing : -0.01em;
+}
+
+h3,
+.h3 {
+    font-size   : var(--text-md);
+    line-height : var( --vspace-1);
+}
+
+h4,
+.h4 {
+    font-size   : var(--text-lg);
+    line-height : var(--vspace-1);
+}
+
+h5,
+.h5 {
+    font-size   : var(--text-md);
+    line-height : var(--vspace-0_875);
+}
+
+h6,
+.h6 {
+    font-family    : var(--font-1);
+    font-weight    : 600;
+    font-size      : var(--text-sm);
+    line-height    : var(--vspace-0_75);
+    text-transform : uppercase;
+    letter-spacing : 0.3rem;
+}
+
+/* figures
+ */
+figure img,
+p img {
+    margin         : 0;
+    vertical-align : bottom;
+}
+
+figure {
+    display      : block;
+    margin-left  : 0;
+    margin-right : 0;
+}
+
+/* --------------------------------------------------------------------
+ * ## spacing
+ * -------------------------------------------------------------------- */
+
+button,
+.btn {
+    margin-bottom : var(--vspace-0_5);
+}
+
+input,
+textarea,
+select,
+figure,
+figcaption,
+p,
+ul,
+ol,
+dl,
+form,
+img,
+.video-container {
+    margin-bottom : var(--vspace-1);
+}
+
+/* ===================================================================
+ * # FORM
+ *
+ *
+ * ------------------------------------------------------------------- */
+ fieldset {
+    border  : none;
+    padding : 0;
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+textarea,
+select {
+    --input-vpadding    : calc(((var(--input-height) - var(--input-line-height)) / 2) - 1px);
+    display             : block;
+    height              : var(--input-height);
+    padding             : var(--input-vpadding) calc(2.4rem - 1px);
+    border              : 0;
+    outline             : 0;
+    color               : var(--color-placeholder);
+    font-family         : var(--font-1);
+    font-size           : var(--text-sm);
+    font-size           : calc(var(--text-size) * 0.8889);
+    line-height         : var(--input-line-height);
+    max-width           : 100%;
+    background-color    : var(--color-gray-5);
+    border              : 1px solid transparent;
+    transition          : all 0.3s ease-in-out;
+    border-radius       : var(--border-radius);
+}
+
+textarea {
+    min-height : calc(8 * var(--space));
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    color            : var(--color-black);
+    background-color : white;
+    box-shadow       : 0 0 5px var(--color-1);
+    border           : 1px solid var(--color-1-light);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display : inline;
+}
+
+label>input[type="checkbox"],
+label>input[type="radio"] {
+    margin   : 0;
+    position : relative;
+    top      : 2px;
+}
+/* ===================================================================
+ * # BUTTONS
+ ------------------------------------------------------------------- */
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    --btn-height            : var(--vspace-btn);
+    display                 : inline-block;
+    font-family             : var(--font-1);
+    font-weight             : 500;
+    font-size               : var(--text-size);
+    letter-spacing          : 0.02em;
+    height                  : var(--btn-height);
+    line-height             : calc(var(--btn-height) - 4px);
+    padding                 : 0 3.6rem;
+    margin                  : 0 0.4rem var(--vspace-0_5) 0;
+    color                   : var(--color-btn-text);
+    text-decoration         : none;
+    text-align              : center;
+    white-space             : nowrap;
+    cursor                  : pointer;
+    transition              : all 0.3s;
+    border-radius           : var(--border-radius);
+    background-color        : var(--color-btn);
+    border                  : 2px solid var(--color-btn);
+   }
+
+.btn:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus,
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+    background-color : var(--color-btn-hover);
+    border-color     : var(--color-btn-hover);
+    color            : var(--color-btn-hover-text);
+    outline          : 0;
+}
+
+/* ------------------------------------------------------------------- 
+ * ## theme-specific typography classes
+ * ------------------------------------------------------------------- */
+.body-text-2 {
+    font-size   : calc(var(--text-size) * 0.9444);
+    line-height : calc(0.9375 * var(--space));
+}
+
+.body-text-3 {
+    font-size   : calc(var(--text-size) * 0.8889);
+    line-height : calc(0.9375 * var(--space));
+}
+
+.text-display-1 {
+    font-size   : var(--text-display-1);
+    font-weight : 200;
+    line-height : 1;
+    margin-top  : 0;
+}
+
+/* ------------------------------------------------------------------- 
+ * ## media classes
+ * ------------------------------------------------------------------- */
+
+ /* floated image
+ */
+img.u-pull-right {
+    margin : var(--vspace-0_5) 0 var(--vspace-0_5) var(--vspace-0_875);
+}
+
+img.u-pull-left {
+    margin : var(--vspace-0_5) var(--vspace-0_875) var(--vspace-0_5) 0;
+}
+
+/* responsive video container
+ */
+.video-container {
+    --aspect-ratio : 16/9;
+    position       : relative;
+    height         : 0;
+    overflow       : hidden;
+    padding-bottom : calc(100% / (var(--aspect-ratio)));
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed,
+.video-container video {
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    width    : 80%;
+    height   : 80%;
+}
+
+/* --------------------------------------------------------------------
+ * ## logo
+ * -------------------------------------------------------------------- */
+.s-header__logo {
+    z-index     : 3;
+    line-height : 1;
+    transform   : translate(4px, -2px);
+    padding-top: 2%;
+}
+
+.s-header__logo a {
+    display     : block;
+    margin      : 0;
+    padding     : 0;
+    outline     : 0;
+    border      : none;
+    color       : var(--color-1-lightest  ) ;  
+    font-size   : var(--text-xxxl);
+    font-style  : italic;
+}
+
+.s-header__logo img {
+    float          : left;
+    width          : 70px;
+    margin         : 0;
+    vertical-align : bottom;
+}
+
+/* --------------------------------------------------------------------
+ * ## main navigation
+ * -------------------------------------------------------------------- */
+
+.s-header__nav ul {
+    list-style     : none;
+    display        : block;
+    flex-flow      : column;
+    margin         : 0;
+    padding-top    : 2%;
+    padding-bottom : 2%;
+}
+
+.s-header__nav li {
+    display    : block;
+    padding-left : 0;
+}
+
+.s-header__nav a {
+    display             : block;
+    font-size           : 1.7rem;
+    font-weight         : bolder;
+    line-height         : var(--header-height);
+    color               : rgba(255, 255, 255, 0.6);
+    padding             : 0 1.2rem;
+    }
+
+.s-header__nav .current a {
+    color : white;
+}
+
+
+/* ===================================================================
+ * # FOOTER
+ * ------------------------------------------------------------------- */
+footer {
+
+    padding-top      : calc(0.5 * var(--space));
+    margin-top       : auto;
+    font-weight      : 20;
+    color            : rgba(255, 255, 255, 0.4);
+    position         : relative;
+}
+
+/* ===================================================================
+ * # PURCHASE ORDER
+ * ------------------------------------------------------------------- */
+
+ .cart-btn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  #cart {
+    position: relative;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 1em 4em 0 0;
+  }
+  
+  .cart-quantity {
+    color: white;
+    background-color: red;
+    padding: .2em .3em;
+    position: absolute;
+    margin: .8em 7.5em 0 0;
+    right: 0;
+    border: solid 2px red;
+    border-radius: 15px;
+    font-weight: bolder;
+  }
+  
+  .items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: 1em
+  }
+  
+  .card {
+  /*   width: 15rem; */
+    margin: 1em;
+    position: relative;
+    overflow: hidden; 
+    text-align: center
+  }
+  
+  .card:hover .add-to-cart {
+    transform: translateX(0);
+  }
+  
+  .product-image {
+    margin-bottom: 1em
+  }
+  
+  .add-to-cart {
+    background-color: black;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 65%;
+    padding: .5em 1em; 
+    transform: translateX(300px);
+    transition: .5s ease;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 1.2rem
+  }
+  
+  .product-price {
+    padding-top: 1em;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .cart-modal-overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    z-index: 2;
+    transform: translateY(-200%);
+    transition: .5s ease-out;
+  }
+  .cart-modal-overlay.open {
+    transform: translateY(0%);
+  }
+  .cart-modal {
+    height: 100vh;
+    width: 50%;
+    background-color: rgb(50,50,50);
+    float: right;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  
+  #close-btn {
+    font-size: 1.5rem;
+    float: right;
+    margin: .5em 2em 0 0;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .cart-is-empty {
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+    display: none;
+    
+  }
+  
+  .total {
+    text-align: center;
+    margin: 2em 0 2em 0;
+  /*   display: none; */
+  }
+  
+  .cart-total {
+    color: white;
+  }
+  
+  .total-price {
+    color: white;
+    font-size: 2rem;
+    display: block;
+  }
+  
+  .purchase-btn {
+    font-size: 1rem;
+    font-weight: bolder;
+    background-color: green;
+    color: white;
+    padding: 1em 2em;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 2em 0 1em 0;
+  }
+  
+  .product-rows {
+    margin-top: 3em;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  
+  .product-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-image {
+    width: 10rem;
+    margin: 1em;
+  }
+  
+  .cart-price {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bolder;
+  }
+  
+  .product-quantity {
+    width: 4rem;
+    font-size: 2rem;
+    margin-left: 3rem;
+  }
+  
+  .remove-btn {
+    padding: 1em 2em;
+    background-color: red;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 3rem;
+    font-weight: bolder;
+    font-size: 1rem;
+  }
+  
+  .remove-btn:active {
+    transform: translateY(5px);
+  }
+  
+  @media (max-width: 1000px){
+    .cart-modal {
+      width: 100vw;
+    } 
+    
+    .product-row {
+      flex-direction: column;
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    
+    .remove-btn {
+      margin: 0
+    }
+    
+    .product-quantity {
+      margin: .5em 0 .5em 0
+    }
+  }

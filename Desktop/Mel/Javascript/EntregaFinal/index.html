@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rinconcito Verde | Market Place</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="assets/img/favicon/favicon.ico">
+</head>
+    
+<body>
+    <div class="col-sm-9">	
+        <!-- inicio main body-->
+        <section id="main_body">
+                        <!--  cart modal  -->
+            <div class="cart-modal-overlay">
+                <div class="cart-modal">
+                <i id="close-btn" class="fas fa-times"></i>
+                    <h1 class="cart-is-empty">El carrito esta vacio</h1>
+                    <div class="product-rows">    </div>
+                    <div class="total">
+                    <h1 class="cart-total">TOTAL</h1>
+                        <span class="total-price">$0</span>
+                        <button class="purchase-btn">COMPRAR</button>
+                    </div>
+                </div>
+                </div>
+            <!--   end of cart modal -->
+            <a class="cart-btn">
+                <i id="cart" class="fas fa-shopping-cart"></i>
+                <span class ="cart-quantity">0</span>
+            </a>
+            <!--  products  search -->
+            <div id="search-container">
+                <input
+                  type="search"
+                  id="search-input"
+                  placeholder="Search product name here.."
+                />
+                <button id="search">Search</button>
+            </div>   
+            <div id="buttons">
+                <button class="button-value" onclick="filterProduct('all')">All</button>
+                <form action=""> 
+                    <h3> Producto <input type="text" id="nombre"/></h3>
+                    Catergoria <input type="text" id="categoria"/>
+                    Precio <input type="number" id="precio"/>
+                     
+                    <button>Enviar</button>
+                </form>
+            </div>
+            <!--  products  -->
+            <div >
+                <article>
+                    <h4 >Despensa</h4>
+                    <p > Encuentra todos los elementos para tu casa </p>
+                </article> 
+                <article>
+                    <h4 > Clases grabadas</h4>
+                    <p > En esta seccion puedes encontrar clases de yoga y pilates, te esperamos!</p>
+                    <div class="items-container">
+                    <div class="card" id="productos">               
+                    </div>
+                    </div>
+                </article>
+            </div>
+            <!--  end of products  -->
+           
+            
+        </section>
+    </div>
+
+    <script src="./main.js"></script>
+        <!-- cierre main body-->
+    </div>
+ 
+       
+    </body>
+    </html>
