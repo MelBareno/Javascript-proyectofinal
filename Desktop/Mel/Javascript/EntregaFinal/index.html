@@ -4,78 +4,143 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rinconcito Verde | Market Place</title>
-
-    <link rel="stylesheet" href="css/styles.css" />
+	  <title>Rinconcito Verde | Market Place</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css" />
     <link rel="icon" href="assets/img/favicon/favicon.ico">
 </head>
+        <!--inicio header-->
+        <header >  
+        <!--LOGO-->
+        <div class="s-header__logo">
+        <div class="container-fluid">
+            <div class="row"> 
+                <a class="logo d-flex justify-content-start"  href="index.html">
+                    <img src="assets/img/logowodsc.png" alt="Homepage" >
+                    The Joy of Being
+                </a>
+            </div>
+        </div>
+        </div>
+        <!--LOGO-->  
+        </header>
+        <!--fin header-->
     
 <body>
-    <div class="col-sm-9">	
-        <!-- inicio main body-->
-        <section id="main_body">
-                        <!--  cart modal  -->
-            <div class="cart-modal-overlay">
-                <div class="cart-modal">
-                <i id="close-btn" class="fas fa-times"></i>
-                    <h1 class="cart-is-empty">El carrito esta vacio</h1>
-                    <div class="product-rows">    </div>
-                    <div class="total">
-                    <h1 class="cart-total">TOTAL</h1>
-                        <span class="total-price">$0</span>
-                        <button class="purchase-btn">COMPRAR</button>
-                    </div>
-                </div>
-                </div>
-            <!--   end of cart modal -->
-            <a class="cart-btn">
-                <i id="cart" class="fas fa-shopping-cart"></i>
-                <span class ="cart-quantity">0</span>
-            </a>
-            <!--  products  search -->
-            <div id="search-container">
-                <input
-                  type="search"
-                  id="search-input"
-                  placeholder="Search product name here.."
-                />
-                <button id="search">Search</button>
-            </div>   
-            <div id="buttons">
-                <button class="button-value" onclick="filterProduct('all')">All</button>
-                <form action=""> 
-                    <h3> Producto <input type="text" id="nombre"/></h3>
-                    Catergoria <input type="text" id="categoria"/>
-                    Precio <input type="number" id="precio"/>
-                     
-                    <button>Enviar</button>
-                </form>
-            </div>
-            <!--  products  -->
-            <div >
-                <article>
-                    <h4 >Despensa</h4>
-                    <p > Encuentra todos los elementos para tu casa </p>
-                </article> 
-                <article>
-                    <h4 > Clases grabadas</h4>
-                    <p > En esta seccion puedes encontrar clases de yoga y pilates, te esperamos!</p>
-                    <div class="items-container">
-                    <div class="card" id="productos">               
-                    </div>
-                    </div>
-                </article>
-            </div>
-            <!--  end of products  -->
-           
-            
-        </section>
-    </div>
 
-    <script src="./main.js"></script>
+<!-- Tabla - Productos del Carrito -->
+<div class="cart-modal-overlay">
+  <div class="cart-modal">
+    <i id="close-btn" class="fas fa-times"></i>
+      <div class="tabla-calculo" id="tabla-calculo">
+        <table class="tabla">
+          <caption class="titulo-tabla">Productos en el carrito</caption>
+          <thead class="cabecera">
+            <tr>
+              <th class="">Nombre Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Precio Total</th>
+            </tr>
+          </thead>
+
+          <tbody id="carrito-body">
+
+          </tbody>
+          
+          <tfoot id="footer">
+            <tr><td colspan = 4>¡No hay ningun elemento en el carrito!</td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <br>
+        <div class="total">
+           <button class="purchase-btn">COMPRAR</button>
+          </div>
+
+</div>
+</div>
+<!--   end of cart modal -->
+<a class="cart-btn">
+  <i id="cart" class="fas fa-shopping-cart"></i>
+  
+</a>
+
+<!-- Template de las filas -->
+<template id="agregar-producto-al-carro">
+  <tr>
+        <td id="producto">yoga</td>
+        <td><button id="menos-cantidad" class="button-qty">-</button><span id="cant">1</span><button id='mas-cantidad' class="button-qty">+</button></td>
+        <td class="precio-tabla" id="precio-uni">3500</td>
+        <td class="precio-tabla" id="precio-total-prod">3500</td>
+      </tr>
+</template>
+
+<!-- Template del footer de la tabla -->
+<template id="tfooter">
+  <tr class="none">
+    <td colspan = 2 class="border-bottom-left"><button id="vaciar-tabla" class="button">Vaciar carrito</button></td>
+    <td class="negrita">Precio Total</td>
+    <td id="total-a-pagar" class="precio-tabla border-bottom-right negrita">5.00</td>
+  </tr>
+</template>
+
+
+  <div class="col-sm-9">	
+      <!-- inicio main body-->
+      <section id="main_body">
+
+          <!--  products  search -->
+          <div id="search-container">
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Search product name here.."
+              />
+              <button id="search">Search</button>
+          </div> 
+
+    <article>
+      <h4 >Despensa</h4>
+      <p > Encuentra todos los elementos para tu casa </p>
+    </article> 
+    <article>
+      <h4 > Clases grabadas</h4>
+      <p > En esta seccion puedes encontrar clases de yoga y pilates, te esperamos!</p>                      
+          <!-- Nombre y descripción del producto -->
+
+      <!-- Aqui se insertan las cards de productos con javascript-->
+      <div class="contenedor-productos">
+        
+      </div>
+
+      <!-- template del producto -->
+      <template id="template-prod">
+        <article class="menu-productos">
+        <!-- Imagen del producto -->
+        <div class="contenedor-img">
+          <img src="" alt="">
+        </div>
+        <!-- Nombre y descripción del producto -->
+        <div class="div-info">
+          <h2 class="nombre-prod">Nombre Producto</h2>
+          <hr class="separador">
+          <p class="descripcion-prod">Descripción producto</p>
+        </div>
+        <!-- Precio y Agregar al carrito -->
+        <div class="div-precio-boton">
+            <p class="precio">precio Producto</p>
+            <button class="btn">Agregar</button>
+        </div>
+        </article>
+      </template>
+    </article>
+
+  </div>  
+  <script src="main.js"></script>
         <!-- cierre main body-->
-    </div>
+</body>
+</html>  
  
        
-    </body>
-    </html>
+    

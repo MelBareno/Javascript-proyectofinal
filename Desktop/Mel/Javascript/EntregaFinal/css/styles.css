@@ -183,7 +183,7 @@
 
     /* default button height
      */
-    --vspace-btn        : var(--vspace-2);
+    --vspace-btn        : var(--vspace-1);
 }
 /* on mobile devices below 600px, change the value of '--multiplier' 
  * to adjust the values of base font size and vertical space unit.
@@ -600,7 +600,7 @@ figure {
 
 button,
 .btn {
-    margin-bottom : var(--vspace-0_5);
+    margin-bottom : var(--vspace-0_125);
 }
 
 input,
@@ -696,7 +696,7 @@ input[type="button"] {
     display                 : inline-block;
     font-family             : var(--font-1);
     font-weight             : 500;
-    font-size               : var(--text-size);
+    font-size               : var(--text-sm);
     letter-spacing          : 0.02em;
     height                  : var(--btn-height);
     line-height             : calc(var(--btn-height) - 4px);
@@ -874,14 +874,14 @@ footer {
   
   .cart-quantity {
     color: white;
-    background-color: red;
-    padding: .2em .3em;
+    background-color: black;
+    padding: .05em .3em;
     position: absolute;
-    margin: .8em 7.5em 0 0;
+    margin: -0.40em 5em 0 0;
     right: 0;
-    border: solid 2px red;
-    border-radius: 15px;
-    font-weight: bolder;
+    border: solid 2px black;
+    border-radius: 10px;
+    font-size: var(--text-xs);
   }
   
   .items-container {
@@ -920,12 +920,6 @@ footer {
     cursor: pointer;
     font-weight: bolder;
     font-size: 1.2rem
-  }
-  
-  .product-price {
-    padding-top: 1em;
-    font-weight: bold;
-    font-size: 1.5rem;
   }
   
   .cart-modal-overlay {
@@ -981,19 +975,6 @@ footer {
     display: block;
   }
   
-  .purchase-btn {
-    font-size: 1rem;
-    font-weight: bolder;
-    background-color: green;
-    color: white;
-    padding: 1em 2em;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    margin: 2em 0 1em 0;
-  }
-  
   .product-rows {
     margin-top: 3em;
     width: 95%;
@@ -1024,18 +1005,6 @@ footer {
     margin-left: 3rem;
   }
   
-  .remove-btn {
-    padding: 1em 2em;
-    background-color: red;
-    color: white;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 3rem;
-    font-weight: bolder;
-    font-size: 1rem;
-  }
-  
   .remove-btn:active {
     transform: translateY(5px);
   }
@@ -1059,3 +1028,141 @@ footer {
       margin: .5em 0 .5em 0
     }
   }
+/* ===================================================================
+ * # lista de productos
+ * ------------------------------------------------------------------- */
+  
+ /* DESDE AQUI EMPIEZA LA SECCIÓN DE LOS PRODUCTOS */
+.menu-productos {
+    height: 370px;
+    width: 300px;
+    border-radius: 0.35rem;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow:0px 0px 1rem hsla(240, 100%, 90%, 0.3);
+    transition: transform 0.1s;
+    overflow: hidden;
+    margin: 1rem;
+  }
+  .menu-productos:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+    box-shadow: 0 0 2rem hsla(240, 100%, 90%, 0.5);
+
+  }.contenedor-img {
+    border-top-left-radius: .35rem;
+    height: 200px;
+    width: 300px;
+    overflow: hidden;
+  }
+
+  /* Contenedor de todos los productos */
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  /* Nombre y descripción del producto */
+.div-info {
+    flex: 1;
+    border-bottom: var(--border);
+    overflow: hidden;
+  }
+  
+  .nombre-prod {
+    margin: 0;
+    font-size  : var(--text-sm);
+    text-align: center;
+    padding: 0.2rem 0;
+  }
+  .separador {
+    width: 80%;
+    margin: .2rem auto;
+    border: none;
+    border-top: var(--border);
+  }
+  .descripcion-prod {
+    margin: 0;
+    font-size: 0.9rem;
+    padding: 0.2rem 1rem;
+    overflow: hidden;
+    opacity: .7;
+    text-align: center;
+    font-size  : var(--text-xs);
+  }
+
+  /* Precio y Boton Carrito */
+  .div-precio-boton {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: .5rem;
+  }
+  .precio {
+    margin: 0 .5em;
+  }
+  .precio::before {
+    content: '$';
+    padding-right: 0.3rem;
+  }
+
+  .carrito {
+    width: 18px;
+  }
+  /*  ===================================================================
+  * # SECCIÓN DEL CARRITO TABLA
+  * ------------------------------------------------------------------- */
+
+  .tabla-calculo {
+    display: flex;
+    justify-content: center;
+  }
+  .tabla {
+    width:80%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    color: white;
+    margin-bottom: 2rem;
+    empty-cells: hide;
+    border-radius: 10px;
+  }
+  .titulo-tabla {
+    font-size: var(--text-xs);
+    padding: .5rem;
+  }
+ 
+  .button-qty{
+    height: var(--vspace-1);
+    padding: 0 0.5rem;
+  }
+
+  th {
+    font-size: var(--text-xs);
+    background: var(--color-gray-17);
+  }
+  th, td, tr {
+    border: var(--border-table);
+    text-align: center;
+    padding: .4rem 0;
+    font-size: var(--text-xs);
+  }
+  td {
+    background: hsla(210, 40%, 90%, .9);
+    color: black;
+  }
+  .precio-tabla::before {
+    content: '$';
+    padding-right: 0.4rem;
+  }
+ 
+  .negrita {
+    font-weight: bold;
+  }
+  .none {
+    background: transparent;
+    border: none;
+  }
+  
